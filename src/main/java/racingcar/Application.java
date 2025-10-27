@@ -10,12 +10,7 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         String tryCountString = Console.readLine();
 
-        int tryCount;
-        try {
-            tryCount = Integer.parseInt(tryCountString);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("시도할 횟수는 정수 형태로 입력해야합니다.");
-        }
+        int tryCount = parseInt(tryCountString);
 
         List<Car> cars = CarFactory.makeCarsFromCarsNameString(carNameString);
 
@@ -23,5 +18,13 @@ public class Application {
 
         race.startRace();
         race.printWinners();
+    }
+
+    public static int parseInt(String input) {
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("시도할 횟수는 정수 형태로 입력해야합니다.");
+        }
     }
 }
